@@ -1,0 +1,160 @@
+/* CSS Design System for Ayntharasan I Portfolio - Inspired by achanandhi.com styling */
+
+:root {
+  /* Dark Theme Tokens */
+  --background: #090a0f;
+  --surface: #12141c;
+  --surface-header: #181b26;
+  --border: #232736;
+  --foreground: #f3f4f6;
+  --foreground-muted: #9ca3af;
+  --accent: #10b981; /* Emerald Green */
+  --accent-hover: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.15);
+}
+
+.light {
+  /* Light Theme Tokens */
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --surface-header: #f1f5f9;
+  --border: #e2e8f0;
+  --foreground: #0f172a;
+  --foreground-muted: #64748b;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --accent-glow: rgba(5, 150, 105, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Typography Utility */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Ambient Cybernetic Grid Overlay */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.light .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* Ambient Cursor Glow Effect */
+.cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--accent-glow), transparent 80%);
+}
+
+@media (max-width: 768px) {
+  .cursor-glow {
+    display: none; /* Disable cursor glow on mobile touch screens for performance */
+  }
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Continuously Blinking Terminal Cursor */
+@keyframes term-blink-anim {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.term-cursor-block {
+  display: inline-block;
+  width: 8px;
+  height: 1.15em;
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: term-blink-anim 1s steps(2, start) infinite;
+  vertical-align: middle;
+  border-radius: 1px;
+}
+
+#terminal-input {
+  caret-color: var(--accent);
+  min-width: 60px;
+}
+
+#terminal-input::placeholder {
+  color: var(--foreground-muted);
+  opacity: 0.5;
+}
+
+/* Strict Mobile Viewport Overflow Protection */
+@media (max-width: 640px) {
+  #terminal-log {
+    font-size: 11px;
+    padding: 10px;
+    max-height: 250px;
+  }
+
+  .hero-btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .hero-btn-grid a {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 11px;
+    box-sizing: border-box;
+  }
+
+  .stack-card {
+    padding: 12px 8px;
+  }
+}
+
+/* Backdrop blur fallback */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
