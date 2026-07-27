@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Ayntharasan I | Backend Developer & Python/Django Specialist</title>
+    <meta name="description" content="Portfolio of Ayntharasan I — B.Tech IT Undergraduate, Backend Developer specializing in Python, Django, Django REST Framework, MySQL, and REST APIs.">
+    <meta name="keywords" content="Ayntharasan I, Ayntharasan, Backend Developer, Python Developer, Django, Django REST Framework, REST API, MySQL, MongoDB, Villupuram, Codveda">
+    <meta name="author" content="Ayntharasan I">
+    
+    <!-- OpenGraph / Social Meta Tags -->
+    <meta property="og:title" content="Ayntharasan I | Backend Developer & Python/Django Specialist">
+    <meta property="og:description" content="Backend Developer skilled in Python, Django, REST API development, databases, and building scalable web applications.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              background: 'var(--background)',
+              surface: 'var(--surface)',
+              'surface-header': 'var(--surface-header)',
+              border: 'var(--border)',
+              foreground: 'var(--foreground)',
+              'foreground-muted': 'var(--foreground-muted)',
+              accent: 'var(--accent)',
+              'accent-hover': 'var(--accent-hover)',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Custom CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background text-foreground font-sans antialiased min-h-screen flex flex-col selection:bg-accent/30 selection:text-accent bg-grid-pattern overflow-x-hidden max-w-full">
+
+    <!-- Ambient Cursor Glow Overlay -->
+    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md transition-colors duration-200 w-full">
+        <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+            <a class="font-mono text-sm sm:text-base font-bold tracking-tight text-foreground flex items-center gap-1 shrink-0 mr-4 sm:mr-8 group" href="#home">
+                <span class="text-accent group-hover:translate-x-0.5 transition-transform">~/</span>ayntharasan
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden items-center gap-3 lg:gap-4 md:flex">
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#home">
+                    Home<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#about">
+                    About<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#stack">
+                    Tech Stack<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#projects">
+                    Projects<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#experience">
+                    Internship<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#education">
+                    Education<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#certifications">
+                    Certifications<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+                <a class="nav-link group relative font-mono text-xs transition-colors duration-200 hover:text-foreground text-foreground-muted py-1" href="#contact">
+                    Contact<span class="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-200 w-0 group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <button type="button" id="cmd-palette-btn" aria-label="Open command palette" class="hidden h-9 items-center gap-2 rounded-md border border-border bg-surface px-2.5 font-mono text-xs text-foreground-muted transition-colors duration-200 hover:border-accent hover:text-accent md:flex">
+                    <span>⌘K</span>
+                </button>
+                
+                <button type="button" id="theme-toggle-btn" aria-label="Toggle theme" class="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-surface text-foreground-muted transition-colors duration-200 hover:border-accent hover:text-accent">
+                    <!-- Sun Icon -->
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    <!-- Moon Icon -->
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                    </svg>
+                </button>
+
+                <button type="button" id="mobile-menu-btn" aria-label="Open menu" class="flex h-9 w-9 items-center justify-center rounded-md border border-border text-foreground-muted transition-colors duration-200 hover:border-accent hover:text-accent md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden border-b border-border bg-surface/95 backdrop-blur-md px-4 pb-5 pt-3 md:hidden">
+            <nav class="grid grid-cols-2 gap-2">
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#home">
+                    <span>🏠</span> Home
+                </a>
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#about">
+                    <span>👤</span> About
+                </a>
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#stack">
+                    <span>🛠</span> Tech Stack
+                </a>
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#projects">
+                    <span>🚀</span> Projects
+                </a>
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#experience">
+                    <span>💻</span> Internship
+                </a>
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#education">
+                    <span>🎓</span> Education
+                </a>
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#certifications">
+                    <span>📜</span> Certifications
+                </a>
+                <a class="mobile-nav-link flex items-center gap-2 rounded border border-border/50 bg-background/50 p-2.5 font-mono text-xs font-medium text-foreground-muted hover:border-accent hover:text-accent" href="#contact">
+                    <span>✉️</span> Contact
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-full overflow-x-hidden">
+
+        <!-- Hero Section -->
+        <section id="home" class="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-20">
+            <div class="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-12">
+                <div class="flex flex-col gap-4 sm:gap-6">
+                    <div>
+                        <p class="font-mono text-xs sm:text-sm text-accent">$ whoami</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5">
+                            <h1 class="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">Ayntharasan I</h1>
+                            <button type="button" id="story-modal-trigger" class="font-mono text-xs text-foreground-muted underline decoration-dotted decoration-foreground-muted/50 underline-offset-4 transition-colors duration-200 hover:text-accent hover:decoration-accent">
+                                background & summary
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-mono text-xs sm:text-sm text-foreground-muted leading-relaxed">
+                            Backend Developer <span class="text-accent">|</span> Python & Django Specialist <span class="text-accent">|</span> REST APIs & SQL
+                        </p>
+                    </div>
+                    <div>
+                        <p class="max-w-xl text-sm sm:text-base text-foreground-muted leading-relaxed">
+                            Motivated fresher with a B.Tech degree in Information Technology specializing in backend engineering with Python, Django, Django REST Framework, relational databases, and RESTful API architecture.
+                        </p>
+                    </div>
+                    <div>
+                        <!-- Mobile Responsive 2x2 Grid / Desktop Flex Row -->
+                        <div class="hero-btn-grid sm:flex sm:flex-wrap gap-2.5 sm:gap-3 pt-1 w-full">
+                            <a target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md px-3.5 sm:px-5 py-2.5 font-mono text-xs sm:text-sm font-medium transition-colors duration-200 border border-border text-foreground hover:border-accent hover:text-accent" href="https://github.com/ayntharasan">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 shrink-0"><path d="M12 .5C5.73.5.75 5.48.75 11.75c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.17.69-3.84-1.34-3.84-1.34-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.53-.29-5.19-1.27-5.19-5.63 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.16a10.9 10.9 0 0 1 5.72 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.81 1.17 3.05 0 4.37-2.67 5.34-5.21 5.62.41.36.77 1.06.77 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.25 11.25 0 0 0 23.25 11.75C23.25 5.48 18.27.5 12 .5Z"/></svg>
+                                <span class="truncate">GitHub</span>
+                            </a>
+                            <a target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md px-3.5 sm:px-5 py-2.5 font-mono text-xs sm:text-sm font-medium transition-colors duration-200 border border-border text-foreground hover:border-accent hover:text-accent" href="https://linkedin.com/in/ayntharasan">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 shrink-0"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/></svg>
+                                <span class="truncate">LinkedIn</span>
+                            </a>
+                            <a href="mailto:ayntharasana2003@gmail.com" class="inline-flex items-center gap-2 rounded-md px-3.5 sm:px-5 py-2.5 font-mono text-xs sm:text-sm font-medium transition-colors duration-200 bg-accent text-background hover:bg-accent-hover cursor-pointer shadow-lg shadow-accent/20">
+                                ✉️ <span class="truncate">Email Me</span>
+                            </a>
+                            <a href="tel:+918754681979" class="inline-flex items-center gap-2 rounded-md px-3.5 sm:px-5 py-2.5 font-mono text-xs sm:text-sm font-medium transition-colors duration-200 border border-border text-foreground hover:border-accent hover:text-accent">
+                                📞 <span class="truncate">+91 8754681979</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Terminal Component -->
+                <div class="mt-2 lg:mt-0 w-full">
+                    <div id="terminal-box" class="cursor-text overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-accent/60 shadow-xl w-full">
+                        <div class="flex items-center gap-2 border-b border-border px-3.5 py-2.5">
+                            <span class="h-3 w-3 rounded-full bg-[#ff5f57] shrink-0"></span>
+                            <span class="h-3 w-3 rounded-full bg-[#febc2e] shrink-0"></span>
+                            <span class="h-3 w-3 rounded-full bg-[#28c840] shrink-0"></span>
+                            <span class="ml-2 font-mono text-[11px] sm:text-xs text-foreground-muted truncate">
+                                <span class="sm:hidden">visitor@ayntharasan: ~</span>
+                                <span class="hidden sm:inline">visitor@ayntharasan.dev: ~</span>
+                            </span>
+                        </div>
+                        <div id="terminal-log" role="log" aria-live="polite" class="h-64 sm:h-72 overflow-y-auto p-3 sm:p-4 font-mono text-xs leading-relaxed custom-scrollbar">
+                            <p class="whitespace-pre-wrap text-foreground-muted">This terminal is real — try typing a command below.</p>
+                            <p class="whitespace-pre-wrap text-foreground-muted">Type 'help' or click: <button type="button" class="term-quick-cmd text-accent underline cursor-pointer">whoami</button>, <button type="button" class="term-quick-cmd text-accent underline cursor-pointer">projects</button>, <button type="button" class="term-quick-cmd text-accent underline cursor-pointer">skills</button></p>
+                            <div id="terminal-output-container"></div>
+                            
+                            <form id="terminal-form" class="mt-3 flex items-center gap-1.5 relative w-full">
+                                <label for="terminal-input" class="sr-only">Terminal command input</label>
+                                <span class="whitespace-nowrap text-accent font-bold text-xs sm:text-sm shrink-0">
+                                    <span class="sm:hidden">ayntharasan:~$</span>
+                                    <span class="hidden sm:inline">visitor@ayntharasan.dev:~$</span>
+                                </span>
+                                <span id="term-blinking-bar" class="term-cursor-block shrink-0"></span>
+                                <input id="terminal-input" autocomplete="off" autocapitalize="off" spellcheck="false" class="flex-1 bg-transparent text-foreground outline-none font-mono text-xs sm:text-sm min-w-0" placeholder="type 'help'...">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+            <div>
+                <p class="font-mono text-xs sm:text-sm text-accent">$ cat about.md</p>
+                <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-foreground">About Me</h2>
+            </div>
+            
+            <div class="mt-8 grid items-center gap-8 lg:grid-cols-[1fr_2fr]">
+                <!-- Avatar Symbol / Initial Frame -->
+                <div class="flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent to-emerald-400 opacity-30 blur group-hover:opacity-60 transition duration-300"></div>
+                        <div class="relative h-48 w-48 sm:h-56 sm:w-56 rounded-2xl border-2 border-accent/40 bg-surface flex flex-col items-center justify-center text-center p-6 shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
+                            <div class="h-20 w-20 rounded-full bg-accent/10 border-2 border-accent flex items-center justify-center text-accent font-mono font-bold text-3xl mb-3 shadow-[0_0_20px_var(--accent-glow)]">
+                                AI
+                            </div>
+                            <h3 class="font-bold text-lg text-foreground">Ayntharasan I</h3>
+                            <p class="font-mono text-xs text-accent">Backend Developer</p>
+                            <p class="font-mono text-[11px] text-foreground-muted mt-1">📍 Villupuram, TN</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="text-sm sm:text-base leading-relaxed text-foreground-muted">
+                        I'm <strong class="text-foreground">Ayntharasan I</strong> — a detail-oriented <strong class="text-foreground">Backend Developer</strong> with a Bachelor of Technology degree in Information Technology from <strong class="text-foreground">University College of Engineering Villupuram</strong> (75%).
+                    </p>
+                    <p class="text-sm sm:text-base leading-relaxed text-foreground-muted">
+                        I specialize in building secure, scalable backend architectures using <strong class="text-foreground">Python, Django, Django REST Framework, RESTful APIs, MySQL, and MongoDB</strong>. Passionate about database optimization, JWT authentication, and clean code practices.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stat Cards Grid -->
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    <div class="group flex flex-col items-center gap-1.5 rounded-lg border border-border bg-surface px-4 py-5 text-center transition-all duration-300 hover:border-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-foreground-muted transition-colors duration-300 group-hover:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                        <span class="font-mono text-2xl font-bold text-foreground"><span class="counter" data-target="3">0</span>+</span>
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-foreground-muted">Backend Projects</span>
+                    </div>
+
+                    <div class="group flex flex-col items-center gap-1.5 rounded-lg border border-border bg-surface px-4 py-5 text-center transition-all duration-300 hover:border-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-foreground-muted transition-colors duration-300 group-hover:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        <span class="font-mono text-2xl font-bold text-foreground">Python & Django</span>
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-foreground-muted">Core Focus</span>
+                    </div>
+
+                    <div class="group flex flex-col items-center gap-1.5 rounded-lg border border-border bg-surface px-4 py-5 text-center transition-all duration-300 hover:border-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-foreground-muted transition-colors duration-300 group-hover:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                        </svg>
+                        <span class="font-mono text-2xl font-bold text-foreground">75%</span>
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-foreground-muted">B.Tech IT Score</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section with Category Filter -->
+        <section id="stack" class="mx-auto max-w-5xl px-4 py-12 sm:px-6 border-t border-border/40">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <p class="font-mono text-xs sm:text-sm text-accent">$ ls tools/</p>
+                    <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-foreground">Skills & Tech Stack</h2>
+                </div>
+                <!-- Category Filter Tabs -->
+                <div id="stack-filters" class="flex flex-wrap gap-1.5 font-mono text-xs">
+                    <button type="button" class="stack-filter-btn active-filter rounded border border-accent bg-accent/10 px-2.5 py-1 text-accent font-semibold" data-category="all">All</button>
+                    <button type="button" class="stack-filter-btn rounded border border-border bg-surface px-2.5 py-1 text-foreground-muted hover:border-accent hover:text-foreground" data-category="backend">Backend & Python</button>
+                    <button type="button" class="stack-filter-btn rounded border border-border bg-surface px-2.5 py-1 text-foreground-muted hover:border-accent hover:text-foreground" data-category="frontend">Frontend Basics</button>
+                    <button type="button" class="stack-filter-btn rounded border border-border bg-surface px-2.5 py-1 text-foreground-muted hover:border-accent hover:text-foreground" data-category="db-tools">Databases & Tools</button>
+                </div>
+            </div>
+
+            <div id="stack-grid" class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                
+                <!-- Python -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="backend">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#3776AB]"><path d="M11.914 0C5.82 0 6.21 2.646 6.21 2.646l.006 2.735h5.81v.831H3.882s-3.882.44-3.882 5.88c0 5.438 3.385 5.253 3.385 5.253h2.022v-2.853s-.109-3.42 3.355-3.42h5.753s3.242.054 3.242-3.136V3.342S18.326 0 11.914 0zm-3.21 1.745a1.054 1.054 0 1 1 0 2.108 1.054 1.054 0 0 1 0-2.108zM12.086 24c6.094 0 5.704-2.646 5.704-2.646l-.006-2.735h-5.81v-.831h8.143s3.882-.44 3.882-5.88c0-5.438-3.385-5.253-3.385-5.253h-2.022v2.853s.109 3.42-3.355 3.42h-5.753s-3.242-.054-3.242 3.136v5.826S5.674 24 12.086 24zm3.21-1.745a1.054 1.054 0 1 1 0-2.108 1.054 1.054 0 0 1 0 2.108z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">Python</span>
+                </div>
+
+                <!-- Django -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="backend">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#092E20] text-emerald-500"><path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12c0-6.63-5.37-12-12-12zm-1.8 17.5h-2.2v-11h2.2v11zm4.8 0h-2.2v-7.2h2.2v7.2zm0-8.8h-2.2v-2.2h2.2v2.2z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">Django</span>
+                </div>
+
+                <!-- Django REST Framework -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="backend">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-rose-500"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">Django REST (DRF)</span>
+                </div>
+
+                <!-- REST APIs -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="backend">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-accent"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">REST APIs</span>
+                </div>
+
+                <!-- MySQL -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="db-tools">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#4479A1]"><path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12c0-6.63-5.37-12-12-12zm4 17h-2v-4H9v4H7V7h2v4h5V7h2v10z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">MySQL</span>
+                </div>
+
+                <!-- MongoDB -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="db-tools">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#47A248]"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm1 18.5h-2v-3h2v3zm0-5h-2v-8h2v8z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">MongoDB</span>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="frontend">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#F7DF1E]"><path d="M0 0h24v24H0z" fill="none"/><path d="M22 22H2V2h20v20zM12.72 17.97c.56.32 1.25.55 1.93.55 1.09 0 1.62-.48 1.62-1.2 0-.74-.52-1.07-1.46-1.47l-.52-.22c-1.5-.64-2.45-1.45-2.45-3.08 0-2.31 1.83-3.71 4.54-3.71 1.22 0 2.18.26 2.87.65l-.83 1.76c-.52-.3-1.28-.48-2.02-.48-.99 0-1.5.42-1.5 1.03 0 .66.47.96 1.45 1.38l.52.22c1.7.74 2.53 1.57 2.53 3.19 0 2.45-1.92 3.86-4.88 3.86-1.44 0-2.61-.34-3.32-.77l.79-1.71zm-5.74.05c.67.38 1.47.62 2.29.62.91 0 1.36-.34 1.36-.88 0-.52-.32-.82-1.12-1.14l-.45-.18c-1.33-.53-2.15-1.28-2.15-2.65 0-1.94 1.56-3.18 3.93-3.18 1.13 0 2.01.24 2.6.54l-.72 1.52c-.49-.24-1.16-.39-1.85-.39-.77 0-1.16.29-1.16.74 0 .47.33.72 1.13 1.04l.45.18c1.47.58 2.19 1.35 2.19 2.72 0 2.09-1.63 3.32-4.23 3.32-1.31 0-2.39-.3-3.01-.68l.74-1.66z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">JavaScript (Basic)</span>
+                </div>
+
+                <!-- HTML5 & CSS3 -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="frontend">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#E34F26]"><path d="M1.5 0h21l-1.91 21.563L11.97 24l-8.564-2.438L1.5 0zm7.031 9.75l-.234-2.625h10.453l.235-2.625H5.438l.703 7.875h9.328l-.375 4.125-3.14.844-3.141-.844-.203-2.25H6.015l.391 4.453 5.547 1.5 5.547-1.5.75-8.438H8.531z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">HTML5 & CSS3</span>
+                </div>
+
+                <!-- Bootstrap -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="frontend">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#7952B3]"><path d="M16.837 9.94c.594.46.994 1.15.994 1.95 0 1.55-1.18 2.65-3.16 2.65H8.76V6.52h5.56c1.68 0 2.8.96 2.8 2.37 0 .54-.18 1.05-.283 1.05zm-5.63-1.46v1.94h2.55c.78 0 1.25-.42 1.25-1.02 0-.6-.47-.92-1.25-.92H11.207zm0 3.88v2.16h2.72c.87 0 1.39-.42 1.39-1.08 0-.66-.52-1.08-1.39-1.08H11.207zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">Bootstrap</span>
+                </div>
+
+                <!-- Git & GitHub -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="db-tools">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#F05032]"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.44.516.515.655 1.258.428 1.9l2.66 2.66c.645-.226 1.388-.087 1.9.427.712.713.712 1.868 0 2.58-.713.712-1.867.712-2.58 0-.54-.54-.674-1.32-.405-1.977l-2.482-2.48v5.82c.16.08.31.19.44.32.712.712.712 1.868 0 2.58-.713.712-1.867.712-2.58 0-.712-.712-.712-1.868 0-2.58.15-.15.31-.26.49-.34V9.92c-.18-.08-.34-.19-.49-.34-.54-.54-.67-1.33-.39-1.98L7.33 4.84.452 11.717c-.603.604-.603 1.582 0 2.188l10.48 10.478c.604.604 1.582.604 2.187 0l10.427-10.43c.604-.603.604-1.58 0-2.185z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">Git & GitHub</span>
+                </div>
+
+                <!-- Postman -->
+                <div class="stack-card group flex flex-col items-center gap-2.5 rounded-lg border border-border bg-surface px-3 py-5 text-center transition-all duration-300 hover:border-accent" data-category="db-tools">
+                    <svg viewBox="0 0 24 24" class="h-6 w-6 sm:h-7 sm:w-7 fill-[#FF6C37]"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 4.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm0 15c-3.75 0-6.8-2.2-8.2-5.4.05-2.7 5.46-4.1 8.2-4.1 2.74 0 8.15 1.4 8.2 4.1-1.4 3.2-4.45 5.4-8.2 5.4z"/></svg>
+                    <span class="font-mono text-xs text-foreground-muted transition-colors duration-200 group-hover:text-foreground">VS Code & Postman</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mx-auto max-w-5xl px-4 py-12 sm:px-6 border-t border-border/40">
+            <div>
+                <p class="font-mono text-xs sm:text-sm text-accent">$ ls -la projects/</p>
+                <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-foreground">Featured Projects</h2>
+            </div>
+
+            <div class="mt-8 space-y-5">
+                
+                <!-- Project 1: Book Management System -->
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-8 transition-all duration-300 hover:border-accent">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2.5 flex-wrap">
+                                <h3 class="text-xl sm:text-2xl font-bold text-foreground">Book Management System</h3>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-emerald-400 border border-emerald-500/30">
+                                    Django + Django REST Framework
+                                </span>
+                            </div>
+                            <p class="mt-1 font-mono text-xs text-accent">Full-Stack CRUD & REST API Architecture</p>
+                        </div>
+                    </div>
+
+                    <p class="mt-3.5 text-sm text-foreground-muted leading-relaxed">
+                        Developed a comprehensive Book Management System using Django and Django REST Framework featuring complete CRUD operations, user authentication, and REST APIs. Implemented Class-based views, JWT authentication, image upload functionality, and relational database mapping for seamless book management. Designed a scalable architecture to handle multiple users and concurrent requests seamlessly with advanced search, filtering, and pagination.
+                    </p>
+
+                    <ul class="mt-3.5 space-y-1.5 font-mono text-xs text-foreground-muted">
+                        <li class="flex items-center gap-2">
+                            <span class="text-accent">▹</span> Class-based REST API views with JWT authentication and secure permission classes.
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-accent">▹</span> Image upload pipeline, relational database ORM mapping, and search/pagination filters.
+                        </li>
+                    </ul>
+
+                    <div class="mt-5 flex flex-wrap gap-1.5 pt-2 border-t border-border/50">
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Python</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Django</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Django REST Framework</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">JWT Auth</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">SQLite / MySQL</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Student Attendance Management System -->
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-8 transition-all duration-300 hover:border-accent">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-foreground">Student Attendance Management System</h3>
+                            <p class="mt-1 font-mono text-xs text-accent">Web-Based Tracking & Reporting System</p>
+                        </div>
+                        <span class="font-mono text-xs text-foreground-muted">Django + MySQL + Bootstrap</span>
+                    </div>
+
+                    <p class="mt-3.5 text-sm text-foreground-muted leading-relaxed">
+                        Built an interactive web-based attendance tracker using Django, MySQL, and Bootstrap. Designed relational database models for students, courses, and attendance records, and implemented role-based login (admin/teacher) with dedicated dashboards for daily attendance reports and CSV export.
+                    </p>
+
+                    <div class="mt-5 flex flex-wrap gap-1.5 pt-2 border-t border-border/50">
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Django</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">MySQL</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Bootstrap</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Role-Based Access</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">CSV Export</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: E-Commerce Backend API -->
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-8 transition-all duration-300 hover:border-accent">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-foreground">E-Commerce Backend API</h3>
+                            <p class="mt-1 font-mono text-xs text-accent">High-Performance Scalable E-Commerce Backend</p>
+                        </div>
+                        <span class="font-mono text-xs text-foreground-muted">Django REST Framework</span>
+                    </div>
+
+                    <p class="mt-3.5 text-sm text-foreground-muted leading-relaxed">
+                        Developed a scalable E-commerce Backend API using Django REST Framework with JWT authentication, product catalog management, cart system, order processing, filtering, pagination, and RESTful APIs. Implemented secure user authentication and authorization workflows to protect sensitive data while optimizing database queries for high-traffic scalability.
+                    </p>
+
+                    <div class="mt-5 flex flex-wrap gap-1.5 pt-2 border-t border-border/50">
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Python</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Django REST Framework</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">JWT Authentication</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Order System</span>
+                        <span class="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground-muted">Query Optimization</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Internship Section -->
+        <section id="experience" class="mx-auto max-w-5xl px-4 py-12 sm:px-6 border-t border-border/40">
+            <div>
+                <p class="font-mono text-xs sm:text-sm text-accent">$ cat internship_experience.log</p>
+                <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-foreground">Internship Experience</h2>
+            </div>
+
+            <div class="mt-8 space-y-5">
+                <!-- Internship 1: Codveda Python Intern -->
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-8 transition-all duration-300 hover:border-accent">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2.5 flex-wrap">
+                                <h3 class="text-xl sm:text-2xl font-bold text-foreground">Python Intern</h3>
+                                <span class="rounded border border-accent/30 bg-accent/10 px-2.5 py-0.5 font-mono text-xs text-accent font-semibold">Codveda</span>
+                            </div>
+                            <p class="mt-1 font-mono text-xs text-accent">Python Development & Logic Building</p>
+                        </div>
+                    </div>
+                    <ul class="mt-3.5 space-y-2 text-xs sm:text-sm text-foreground-muted leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <span class="text-accent mt-0.5">▹</span> Worked extensively with Python core fundamentals, object-oriented programming concepts, and algorithmic problem-solving exercises.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-accent mt-0.5">▹</span> Improved understanding of backend application logic, software architecture principles, and agile development workflows.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mx-auto max-w-5xl px-4 py-12 sm:px-6 border-t border-border/40">
+            <div>
+                <p class="font-mono text-xs sm:text-sm text-accent">$ cat education.log</p>
+                <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-foreground">Education</h2>
+            </div>
+
+            <div class="mt-8 space-y-5">
+                
+                <!-- Degree: B.Tech IT -->
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-8 transition-all duration-300 hover:border-accent">
+                    <div class="flex flex-wrap items-baseline justify-between gap-3">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-foreground">Bachelor of Technology (B.Tech) — Information Technology</h3>
+                            <p class="mt-1 font-mono text-xs text-accent">University College Of Engineering Villupuram</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-mono text-xs font-bold text-emerald-400">
+                                2023 – 2027 (75%)
+                            </span>
+                        </div>
+                    </div>
+                    <p class="mt-3.5 text-xs sm:text-sm text-foreground-muted leading-relaxed">
+                        Studying core Information Technology disciplines including Data Structures & Algorithms, Object-Oriented Software Development, Database Management Systems (SQL & NoSQL), and Web Application Architecture.
+                    </p>
+                </div>
+
+                <!-- HSC -->
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-6 transition-all duration-300 hover:border-accent">
+                    <div class="flex flex-wrap items-baseline justify-between gap-3">
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-bold text-foreground">Higher Secondary Education (HSC)</h3>
+                            <p class="mt-1 font-mono text-xs text-foreground-muted">Gandhi Memorial Higher Secondary School, Thiruvennainallur, Villupuram</p>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-amber-400 border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 rounded">
+                            2022 – 2023 (81%)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- SSLC -->
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-6 transition-all duration-300 hover:border-accent">
+                    <div class="flex flex-wrap items-baseline justify-between gap-3">
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-bold text-foreground">Secondary School Leaving Certificate (SSLC)</h3>
+                            <p class="mt-1 font-mono text-xs text-foreground-muted">Bonne Nehru Higher Secondary School, Thiruvennainallur, Villupuram</p>
+                        </div>
+                        <span class="font-mono text-xs text-foreground-muted">
+                            2020 – 2021
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="mx-auto max-w-5xl px-4 py-12 sm:px-6 border-t border-border/40">
+            <div>
+                <p class="font-mono text-xs sm:text-sm text-accent">$ cat certifications.log</p>
+                <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-foreground">Certifications & Training</h2>
+            </div>
+
+            <div class="mt-8">
+                <div class="group rounded-lg border border-border bg-surface p-5 sm:p-6 transition-all duration-300 hover:border-accent">
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center justify-center h-9 px-3 rounded bg-accent/10 border border-accent/30 text-accent font-mono font-bold text-xs">
+                            Codveda
+                        </span>
+                        <span class="font-mono text-[10px] uppercase tracking-wider text-accent border border-accent/30 bg-accent/10 px-2 py-0.5 rounded">Completed Internship</span>
+                    </div>
+                    <h3 class="mt-3.5 text-lg sm:text-xl font-bold text-foreground group-hover:text-accent transition-colors">Python Intern Certification</h3>
+                    <p class="mt-1 font-mono text-xs text-foreground-muted">Codveda</p>
+                    <p class="mt-2.5 text-xs sm:text-sm text-foreground-muted leading-relaxed">
+                        Successfully completed Python Development Internship covering core application programming, problem-solving, and web application workflow concepts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mx-auto max-w-5xl px-4 py-12 sm:px-6 border-t border-border/40">
+            <div>
+                <p class="font-mono text-xs sm:text-sm text-accent">$ mailto ayntharasan</p>
+                <h2 class="mt-1 text-2xl sm:text-3xl font-bold text-foreground">Contact</h2>
+            </div>
+
+            <div class="mt-8 grid gap-8 lg:grid-cols-2">
+                <div class="space-y-5">
+                    <p class="text-sm sm:text-base text-foreground-muted leading-relaxed">
+                        I am actively seeking Backend Developer opportunities. Feel free to reach out for hiring, projects, or technical discussions!
+                    </p>
+
+                    <div class="space-y-3 font-mono text-xs sm:text-sm">
+                        <div class="flex items-center gap-3">
+                            <span class="text-accent">✉</span>
+                            <div>
+                                <p class="text-[10px] sm:text-xs text-foreground-muted">Email</p>
+                                <a href="mailto:ayntharasana2003@gmail.com" class="font-bold text-foreground hover:text-accent">ayntharasana2003@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <span class="text-accent">📞</span>
+                            <div>
+                                <p class="text-[10px] sm:text-xs text-foreground-muted">Phone</p>
+                                <a href="tel:+918754681979" class="font-bold text-foreground hover:text-accent">+91 8754681979</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <span class="text-accent">📍</span>
+                            <div>
+                                <p class="text-[10px] sm:text-xs text-foreground-muted">Location</p>
+                                <span class="font-bold text-foreground">Villupuram, Tamil Nadu, India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message Form -->
+                <form id="contact-form" class="rounded-lg border border-border bg-surface p-5 space-y-3.5">
+                    <div>
+                        <label for="contact-name" class="block font-mono text-xs font-semibold text-foreground mb-1.5">Name</label>
+                        <input id="contact-name" type="text" required class="w-full rounded border border-border bg-background px-3.5 py-2 text-xs sm:text-sm text-foreground outline-none focus:border-accent" placeholder="John Doe">
+                    </div>
+
+                    <div>
+                        <label for="contact-email" class="block font-mono text-xs font-semibold text-foreground mb-1.5">Email</label>
+                        <input id="contact-email" type="email" required class="w-full rounded border border-border bg-background px-3.5 py-2 text-xs sm:text-sm text-foreground outline-none focus:border-accent" placeholder="john@example.com">
+                    </div>
+
+                    <div>
+                        <label for="contact-message" class="block font-mono text-xs font-semibold text-foreground mb-1.5">Message</label>
+                        <textarea id="contact-message" rows="4" required class="w-full rounded border border-border bg-background px-3.5 py-2 text-xs sm:text-sm text-foreground outline-none focus:border-accent resize-none" placeholder="Hey Ayntharasan..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full justify-center rounded bg-accent py-2.5 font-mono text-xs sm:text-sm font-semibold text-background transition-colors hover:bg-accent-hover">
+                        Send Message
+                    </button>
+                    <p id="contact-status" class="hidden font-mono text-xs text-center text-accent"></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border bg-background py-6">
+        <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 sm:flex-row sm:px-6">
+            <p class="font-mono text-xs text-foreground-muted text-center sm:text-left">
+                © 2026 Ayntharasan I. Designed with terminal aesthetics.
+            </p>
+            <div class="flex items-center gap-4 font-mono text-xs">
+                <a href="https://github.com/ayntharasan" target="_blank" class="text-foreground-muted hover:text-accent">GitHub</a>
+                <a href="https://linkedin.com/in/ayntharasan" target="_blank" class="text-foreground-muted hover:text-accent">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Command Palette Modal -->
+    <div id="cmd-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm">
+        <div class="w-full max-w-lg overflow-hidden rounded-lg border border-border bg-surface shadow-2xl">
+            <div class="flex items-center border-b border-border px-4 py-3">
+                <span class="font-mono text-sm text-accent mr-2">⌘</span>
+                <input id="cmd-input" type="text" autocomplete="off" class="w-full bg-transparent text-xs sm:text-sm text-foreground outline-none placeholder:text-foreground-muted font-mono" placeholder="Type a section or command (e.g. projects, skills, internship, education)...">
+                <button type="button" id="cmd-close-btn" class="font-mono text-xs text-foreground-muted hover:text-foreground">ESC</button>
+            </div>
+            <div id="cmd-list" class="max-h-72 overflow-y-auto p-2 font-mono text-xs">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Story / Background Modal -->
+    <div id="story-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm">
+        <div class="w-full max-w-md overflow-hidden rounded-lg border border-border bg-surface p-5 sm:p-6 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-border pb-3">
+                <h3 class="font-mono text-xs sm:text-sm font-bold text-accent">$ cat story.txt</h3>
+                <button type="button" id="story-close-btn" class="font-mono text-xs text-foreground-muted hover:text-foreground">✕</button>
+            </div>
+            <div class="mt-4 space-y-3 font-sans text-xs sm:text-sm text-foreground-muted leading-relaxed">
+                <p>
+                    Passionate Backend Developer focused on Python, Django, REST APIs, and database engineering. Building scalable, secure web services and web APIs.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript script -->
+    <script src="script.js"></script>
+</body>
+</html>
